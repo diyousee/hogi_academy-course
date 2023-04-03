@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+		<link rel="stylesheet" href="../css/register.css"/>
+		<title>Register Form</title>
+	</head>
+
+	<body>
+		<div id="header_div">
+			<div style="min-height: 30px;">
+				<img src="..\images\hogi_academy.png" alt="Logo Hogi Academy"/>
+			</div>
+			<div style="background-color:rgb(238, 238, 238); width: 100%; margin: 5px;">
+				<h1 style="color: #632a04;">RUHUZANGABO Duc Emery<sup><img src="..\images\copyright.png" width="20" height="20" alt="Copyright"/></sup> </h1>
+			</div>
+		</div>
+
+		<div class="menu_top">
+			<ul>
+				<li><a href="./hogi.html">Home</a></li>
+				<li><a href="#">News</a></li>
+				<li><a href="#">Contacts</a></li>
+				<li><a href="./register_form.html" style="background-color: rgb(194, 125, 21);">Sign Up</a></li>
+				<li><a href="./login.html">Login</a></li>
+				<li><a href="https://hogi.bi/" target="_blank">Hogi Website</a></li>
+			</ul>
+		</div>
+
+		<div style="margin-top: 30px;">
+			<form>
+				<table id="tb_form">
+					<tr>
+						<th colspan="4">REGISTER FORM</th>
+					</tr>
+					<tr>
+						<td><label for="f_name">First name</label></td>
+						<td><input type="name" name="f_name" value="" id="f_name"/></td>
+						<td></td>
+						<td><label for="gender">Gender</label></td>
+					</tr>
+					<tr>
+						<td><label for="l_name">Last name</label></td>
+						<td><input type="name" id="l_name"/></td>
+						<td></td>
+						<td>Male <input type="radio" name="gender" id="gender"/> Female <input type="radio" name="gender" id="gender"/></td>
+					</tr>
+					<tr>
+						<td><label for="adress">Adress</label></td>
+						<td><input type="name" id="adress"/></td>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
+						<td><label for="hobby">Hobby</label></td>
+						<td colspan="3">
+							<input type="checkbox" id="sport" value="sport"/>Sport
+							<input type="checkbox" id="email" value="documentaire"/>Documentaire
+							<input type="checkbox" id="email" value="lire"/>Lire
+						</td>
+					</tr>
+					<tr>
+						<td><label for="email">E mail</label></td>
+						<td><input type="email" id="email" value=""/></td>
+						<td style="text-align: right;"><label for="password">Password</label></td>
+						<td><input type="text" id="password"/></td>
+					</tr>
+					<tr>
+						<td><button type="button" value="Submit" class="btn primary large">Submit</button></td>               
+					</tr>
+				</table>
+			</form>
+		</div>
+
+	</body>
+</html>
