@@ -44,9 +44,13 @@ li a {
     text-align: center;
 }
 
-li a:hover {
+li a:hover:not(.active) {
   background-color: #ffbb00;
   color: #3a1a05;
+}
+
+li a:active {
+    background-color: rgb(194, 125, 21);
 }
 
 
