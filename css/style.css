@@ -63,7 +63,7 @@ li a.active {background-color: rgb(194, 125, 21);}
     position: absolute;
     background-color: #f9f9f9;
     min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 10px 0px #ffbb00;
     z-index: 1;
   }
   
@@ -77,4 +77,4 @@ li a.active {background-color: rgb(194, 125, 21);}
 
 .category-list:hover .category-content {
     display: block;
-  }
+}
