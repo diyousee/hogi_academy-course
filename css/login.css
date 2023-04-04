@@ -40,6 +40,8 @@ input {
     border-left: 2px solid #ffbb00;
     border-right: 2px solid #ffbb00;
     font-family:monospace;
+    position: sticky;
+    top: 0;
 }
 
 ul {
@@ -62,8 +64,12 @@ li a {
     text-align: center;
 }
 
-li a:hover {
-  background-color: #ffbb00;
-  color: #3a1a05;
+li a:hover:not(.active) {
+    background-color: #ffbb00;
+    color: #3a1a05;
+}
+
+li a.active {
+    background-color: rgb(194, 125, 21);
 }
 
