@@ -75,28 +75,32 @@ li a.active {background-color: rgb(194, 125, 21);}
     background-color: aliceblue;
     display: flex;
     flex-direction: column;
-    margin: 10vh;
-    border-radius: 20px;
+    margin: 80px 0 0 400px;
+    width: 40%;
+    border-radius: 30px 30px 10px 10px;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(145, 0, 0);
+    background-color: #3a1a05;
     color: azure;
     padding: 8px 16px;
     align-items: center;
+    border-radius: 20px 20px 0 0;
 }
 
 .body {
-    margin: 20px;
+    margin: 0 20px 20px 20px;
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
-.lorem {
-    margin-bottom: 10px;
+
+.icon.fa.fa-address-card {
+    margin: 0 20px 0 20px;
+    color: #3a1a05;
+    font-size:48px;
 }
 
 .footer {
@@ -104,18 +108,39 @@ li a.active {background-color: rgb(194, 125, 21);}
     flex-direction: row;
     justify-content: center;
     margin: 5px;
+    border-top: 2px solid #3a1a05;
+    margin: 0 20px 0 20px;
+    padding: 10px;
 }
 
 .btn {
     padding: 4px 14px;
     margin: 5px;
-    outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 20px;
+
 }
 
-.bg-red {
-    background-color: red;
+.btn.bg-red {
+    background-color: #3a1a05;
     color: white;
+}
+
+.btn.bg-red:hover {
+    background-color: rgba(156, 156, 156, 0.76);
+    border: 1px solid rgb(0, 0, 0);
+    color: #3a1a05;
+}
+
+.btn.bg-white {
+    background-color: white;
+    border: 1px solid #3a1a05;
+    color: #3a1a05;
+}
+
+.btn.bg-white:hover {
+    background-color: #3a1a05;
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
