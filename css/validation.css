@@ -124,23 +124,23 @@ li a.active {background-color: rgb(194, 125, 21);}
 
 .btn.bg-red {
     background-color: #3a1a05;
-    color: white;
+    color: #ffbb00;
 }
 
 .btn.bg-red:hover {
-    background-color: rgba(156, 156, 156, 0.76);
+    background-color: #ffbb00;
     border: 1px solid rgb(0, 0, 0);
     color: #3a1a05;
 }
 
 .btn.bg-white {
-    background-color: white;
+    background-color: #ffbb00;
     border: 1px solid #3a1a05;
     color: #3a1a05;
 }
 
 .btn.bg-white:hover {
     background-color: #3a1a05;
-    border: 1px solid rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    border: 1px solid #ffbb00;
+    color: #ffbb00;
 }
