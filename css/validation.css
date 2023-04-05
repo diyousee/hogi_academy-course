@@ -1,6 +1,6 @@
 body {
-    background-color: #033744; 
-    color: rgb(255, 255, 255);
+    background-color: #1a2c16; 
+    color: rgb(0, 0, 0);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -12,14 +12,7 @@ body {
     display: flex;
 }
 
-/* @media screen and (max-width : 400px) {
-    #header_div {
-        width: 20%;
-        font-size: 10px;
-    }
-} */
-
-/* ----------Menu Bar-------------- */
+/* -------------------Menu Bar ---------------- */
 
 .menu_top {
     border-bottom: 2px solid #ffbb00;
@@ -27,7 +20,7 @@ body {
     border-right: 2px solid #ffbb00;
     font-family:monospace;
     position: sticky;
-    top: 0;  
+    top: 0;
 }
 
 ul {
@@ -76,11 +69,53 @@ li a.active {background-color: rgb(194, 125, 21);}
     display: block;
 }
 
+/* --------Content-----------  */
 
-/*   -----------Content--------------  */
+.parent {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    margin: 10vh;
+    border-radius: 20px;
+}
 
-.picture-div {
-    display:flex;
-    justify-content: flex-start;
-    gap: 12px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(145, 0, 0);
+    color: azure;
+    padding: 8px 16px;
+    align-items: center;
+}
+
+.body {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lorem {
+    margin-bottom: 10px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px;
+}
+
+.btn {
+    padding: 4px 14px;
+    margin: 5px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.bg-red {
+    background-color: red;
+    color: white;
 }
