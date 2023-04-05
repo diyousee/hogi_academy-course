@@ -99,7 +99,7 @@ li a.active {background-color: rgb(194, 125, 21);}
 
 .icon.fa.fa-address-card {
     margin: 0 20px 0 20px;
-    color: #3a1a05;
+    color: #ffbb00;
     font-size:48px;
 }
 
@@ -129,7 +129,7 @@ li a.active {background-color: rgb(194, 125, 21);}
 
 .btn.bg-red:hover {
     background-color: #ffbb00;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid #3a1a05;
     color: #3a1a05;
 }
 
