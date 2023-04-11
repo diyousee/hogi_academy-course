@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login</title>
 </head>
 
@@ -15,7 +16,7 @@
             <img src="..\images\hogi_academy.png" alt="Logo Hogi Academy"/>
         </div>
         <div style="background-color:rgb(238, 238, 238); width: 100%; margin: 5px;">
-            <h1 style="color: #632a04;">RUHUZANGABO Duc Emery<sup><img src="..\images\copyright.png" width="20" height="20" alt="Copyright"/></sup> </h1>
+            <h1 style="color: #632a04;">RUHUZANGABO Duc Emery</h1>
         </div>
     </div>
 
@@ -23,6 +24,7 @@
         <ul>
             <li><a href="./hogi.html">Home</a></li>
             <li><a href="./validation.html">Validation</a></li>
+            <li><a href="./mywebsite.html">My Website</a></li>
             <li class="category-list">
                 <a href="#" class="category-btn">Catégories</a>
                 <div class="category-content">
@@ -39,28 +41,31 @@
         </ul>
     </div>
 
-    <div class="div_login">
-        <form>
-            <table class="tb_login">
-                <tr>
-                    <th colspan="2">LOGIN</th>
-                </tr>
-                <tr>
-                    <td><label for="email">Email</label></td>
-                    <td><input type="email" id="email" name="email" placeholder="Enter email"/></td>
-                </tr>
-                <tr>
-                    <td><label for="password">Password</label></td>
-                    <td><input type="password" id="password" name="password" placeholder="Enter password"/></td>                
-                </tr>
-                <tr>
-                    <th colspan="2"><button><a href="../html/register_form.html">Connect</a></button></th>             
-                </tr>
-                <tr>
-                    <th colspan="2">Forgot Password ? <a href="../html/hogi.html" target="_blank">Click Here</a></th>             
-                </tr>
-            </table>
+    <div class="body">
+        <div class="title">
+            <span style="margin: 10px 0 -15px 0;">Cooking Book</span>
+            <h1>Recipe</h1>
+        </div>
+        <form class="form">
+            <div class="header-form">
+                <i class="fa fa-diamond"></i>
+                <h2>Log In</h2>
+                <span>Please enter the correct account</span>
+                <span>username and password</span>
+            </div>
+            <div class="body-form">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="input-text" placeholder="Input Username"/>
+            
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" class="input-text" placeholder="Input Password"/>
+            </div>
+            <div class="footer-form">
+                <button class="btn">Log in</button>
+                <h5>Forgot your password ? <a href="#" target="_blank">Click Here</a></h5>
+            </div>
         </form>
     </div>
+    
 </body>
 </html>

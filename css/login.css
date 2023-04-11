@@ -4,29 +4,6 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.tb_login {
-    margin: auto;
-    margin-top: 100px;
-    padding: 20px;
-    height: 200%;
-    background-color: #7e5a43;
-    color: #ffffff;
-    border: 1px solid #ffbb00;
-}
-
-td {
-    padding: 10px;
-}
-
-input {
-    height: 25px;
-    background-color: #ffbb00;
-    color: #2e180a;
-    border: none;
-    border-bottom: 2px solid #2e180a;
-    outline-style: none;
-}
-
 #header_div {
     border-top: 2px solid #ffbb00;
     border-left: 2px solid #ffbb00;
@@ -35,11 +12,13 @@ input {
     display: flex;
 }
 
+/* -------------------Menu Bar ---------------- */
+
 .menu_top {
     border-bottom: 2px solid #ffbb00;
     border-left: 2px solid #ffbb00;
     border-right: 2px solid #ffbb00;
-    font-family:monospace;
+    font-family: monospace;
     position: sticky;
     top: 0;
 }
@@ -89,3 +68,113 @@ li a.active {background-color: rgb(194, 125, 21);}
 .category-list:hover .category-content {
     display: block;
 }
+
+/* --------Content-----------  */
+
+.body {
+    background-image: url("../images/plate1.jpg");
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0 0 250px;
+    width: 60%;
+    border-radius: 30px 30px 30px 30px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    width: 30%;
+    color: #ffffff;
+    background-color: #2e180a77;
+}
+
+.title:hover {
+    width: 30%;
+    color: #2e180a;
+    background-color: #ffffff77;
+}
+
+h1 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffbb00;
+    font-size: 40px;
+}
+
+.form {
+    background-color: #ffffff;
+    border-radius: 0 30px 30px 0;
+    padding: 20px;
+    width: 50%;
+    height: 350px;
+    font-size: 13px;
+}
+
+.header-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 10px 0;
+}
+
+.fa.fa-diamond {
+    font-size:30px; color: rgba(236, 204, 21, 0.884); margin-bottom: 15px;
+}
+
+.body-form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: monospace;
+}
+
+input {
+    height: 20px;
+    color: #2e180a;
+    border: 1px solid #ffbb00;
+    border-radius: 5px;
+    padding: 3px 3px 3px 20px;
+    outline-style: none;
+    margin-bottom: 15px;
+}
+
+input:hover {
+    height: 20px;
+    color: #ffbb00;
+    border: 1px solid #2e180a;
+}
+
+.footer-form {
+    text-align: center;
+}
+
+.btn {
+    background-color: #3a1a05;
+    color: #ffbb00;
+    padding: 4px 14px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #ffbb00;
+    border: 1px solid #3a1a05;
+    color: #3a1a05;
+}
+
+a {
+    text-decoration: none;
+    color: #ffbb00;
+}
+
+a:hover {
+    color: #913e06;
+}
+
