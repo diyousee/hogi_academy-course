@@ -73,7 +73,6 @@ li a.active {background-color: rgb(194, 125, 21);}
 
 .body {
     background-image: url("../images/plate1.jpg");
-    background-repeat: no-repeat;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
