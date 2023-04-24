@@ -22,12 +22,6 @@ span {
     padding: 15px;
 }
 
-.body {
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(194, 125, 21);
-}
-
 /* --------------Menu-bar------------------ */
 
 
@@ -79,6 +73,12 @@ li a.active {background-color: rgb(194, 125, 21);}
 
 /* --------------Content------------------ */
 
+.body {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(194, 125, 21);
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -102,6 +102,8 @@ li a.active {background-color: rgb(194, 125, 21);}
     width: 250px;
     height: 200px;
     margin: 5px;
+    padding: 10px 0 0 10px;
+    font-weight: bold;
 }
 
 .big-square {
@@ -109,4 +111,6 @@ li a.active {background-color: rgb(194, 125, 21);}
     width: 500px;
     height: 200px;
     margin: 5px;
+    padding: 10px 0 0 10px;
+    font-weight: bold;
 }
