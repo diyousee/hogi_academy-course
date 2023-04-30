@@ -36,12 +36,11 @@ function igisoroCinqPaire(){
 
         var fois = 5*i;
 
-            if(i%2 == 0){
-                result += "<h5>5 x "+i+" = "+fois+"</h5>";
-            }
-
-        document.getElementById("result").innerHTML = result;
+        if(i%2 == 0){
+            result += "<h5>5 x "+i+" = "+fois+"</h5>";
+        }
     }
+    document.getElementById("result").innerHTML = result;
 }
 
 function igisoroCinqImpaire(){
@@ -51,10 +50,9 @@ function igisoroCinqImpaire(){
 
         var fois = 5*i;
 
-            if(i%2 != 0){
-                result += "<h5>5 x "+i+" = "+fois+"</h5>";
-            }
-
-        document.getElementById("result").innerHTML = result;
+        if(i%2 != 0){
+            result += "<h5>5 x "+i+" = "+fois+"</h5>";
+        }
     }
+    document.getElementById("result").innerHTML = result;
 }
