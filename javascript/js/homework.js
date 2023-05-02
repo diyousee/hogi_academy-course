@@ -16,16 +16,26 @@ function arithmeticResult(){
 function equationSecondDegre(){    
     document.getElementById("result").innerHTML = "";
 
-    let a = 10; let b = 20; let c = 30;
-    let x=1;
-    
-    let result = a*x**2+b*x+c;
+    let a = 1; let b = 20; let c = 30;
+    let delta = b**2-4*a*c;
 
-    let abcData = "<p>Soit : a = "+a+" ; b = "+b+" ; c = "+c+"</p>";    
+    console.log(delta);
+    
+    let abcData = "<p>Si a = "+a+" ; b = "+b+" ; c = "+c+"</p>";    
     let equation = a+"x<sup>2</sup> + "+b+"x + "+c;
 
-    document.getElementById("result").innerHTML = 
-    "<p>Equation : ax<sup>2</sup> + bx + c</p> <p>"+abcData+"</p> <p>Si x = "+x+"</p> <p class='finalResult'>Results : "+equation+" = "+result+"</p>";
+    if(delta>0){
+        var s1 = (-b-Math.sqrt(delta))/2*a;
+        var s2 = (-b+Math.sqrt(delta))/2*a;
+        
+        let result = "X<sub>1</sub> = "+s1+" , X<sub>2</sub> = "+s2;
+
+        document.getElementById("result").innerHTML = 
+        "<p>Equation : ax<sup>2</sup> + bx + c</p> <p>"+abcData+"</p> <p>Delta b<sup>2</sup> - 4ac = "+delta+"</p> <p class='finalResult'>Results : "+equation+" <h3>"+result+"</h3></p>";
+    }else{
+        document.getElementById("result").innerHTML = "<p>Equation : ax<sup>2</sup> + bx + c</p> <p>"+abcData+"</p> <p class='finalResult'>Pas de solution car Delta = b<sup>2</sup> - 4ac est negatif</p>"
+    }
+
 
 }
 
