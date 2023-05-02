@@ -30,11 +30,18 @@ function equationSecondDegre(){
 
         document.getElementById("result").innerHTML = 
         "<p>Equation : ax<sup>2</sup> + bx + c</p> <p>"+abcData+"</p> <p>Delta b<sup>2</sup> - 4ac = "+delta+"</p> <p class='finalResult'>Equation : "+equation+" <h3>Results : "+result+"</h3></p>";
+   
+    }else if(delta == 0){
+        var s = -b/(2*a);
+        
+        let result = "X<sub>1</sub> = "+s;
+
+        document.getElementById("result").innerHTML = 
+        "<p>Equation : ax<sup>2</sup> + bx + c</p> <p>"+abcData+"</p> <p>Delta b<sup>2</sup> - 4ac = "+delta+"</p> <p class='finalResult'>Equation : "+equation+" <h3>Results : "+result+"</h3></p>";
+    
     }else{
         document.getElementById("result").innerHTML = "<p>Equation : ax<sup>2</sup> + bx + c</p> <p>"+abcData+"</p> <p class='finalResult'>Pas de solution car Delta = b<sup>2</sup> - 4ac = "+delta+" est negatif</p>"
     }
-
-
 }
 
 function igisoroCinqPaire(){
