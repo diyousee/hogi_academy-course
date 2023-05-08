@@ -119,7 +119,7 @@ function croissantDecroissant(){
     document.getElementById('tableau').innerHTML = afficheTableau;
 
 
-    if(document.getElementById('decroissant').style.display == "none"){
+    if(document.getElementById('croissant').style.display != "none"){
 
         for(i=0; i<tableau.length; i++){
             for(j=i+1; j<tableau.length; j++){
@@ -133,9 +133,10 @@ function croissantDecroissant(){
 
         document.getElementById('decroissant').style.display = "inline-block";
         document.getElementById('croissant').style.display = "none";
+        var caption = "<caption>Croissant</caption>";
 
 
-    }else if(document.getElementById('croissant').style.display == "none"){
+    }else if(document.getElementById('decroissant').style.display != "none"){
 
         for(i=0; i<tableau.length; i++){
             for(j=i+1; j<tableau.length; j++){
@@ -149,10 +150,11 @@ function croissantDecroissant(){
 
         document.getElementById('croissant').style.display = "inline-block";
         document.getElementById('decroissant').style.display = "none";
+        var caption = "<caption>Décroissant</caption>";
     }
     
     afficheTableau = "";
-    afficheTableau = "<table id='tab'><tr>";
+    afficheTableau = "<table id='tab'>"+caption+"<tr>";
 
     for(i=0; i<tableau.length; i++){
         afficheTableau += "<td>"+tableau[i]+"</td>";
@@ -217,7 +219,7 @@ function paire() {
 
 
     afficheTableau = "";
-    afficheTableau = "<table id='tab'><tr>";
+    afficheTableau = "<table id='tab'><caption>Paire</caption><tr>";
 
     for(i=0; i<tableau.length; i++){
         
@@ -247,7 +249,7 @@ function impaire() {
 
     
     afficheTableau = "";
-    afficheTableau = "<table id='tab'><tr>";
+    afficheTableau = "<table id='tab'><caption>Impaire</caption><tr>";
 
     for(i=0; i<tableau.length; i++){
 
