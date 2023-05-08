@@ -1,5 +1,5 @@
 body {
-    background-color: #1a2c16; 
+    background-color: #201d12; 
     color: rgb(255, 255, 255);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -8,9 +8,14 @@ h2 {
     color: rgb(31, 170, 175);
 }
 
+.btn-homework {
+    display: flex;
+    flex-direction: row;
+}
+
 .btn {
-    background-color: #3a1a05;
-    color: #ffbb00;
+    background-color: #cedb11;
+    color: #302301;
     padding: 4px 14px;
     margin: 5px;
     border: none;
@@ -25,9 +30,20 @@ h2 {
     border-radius: 10px;
 }
 
-.btn-div {
-    display: flex;
-    flex-direction: row;
+.btn.tab {
+    color: #072017;
+    background-color: rgb(31, 170, 175);
+    padding: 15px 14px;
+    margin: 5px;
+    border: none;
+    font-size: 15px;
+}
+
+.btn.tab:hover {
+    color: #ffbb00;
+    background-color: #3a1a05;
+    border: 1px solid #ffbb00;
+    border-radius: 5px;
 }
 
 h5 {
@@ -39,4 +55,18 @@ h5 {
 .finalResult {
     font-size: medium;
     font-weight: bold;
+}
+
+#tab td {
+    background-color: rgb(235, 245, 144);
+    color: rgb(9, 56, 34);
+    border: 2px solid white;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+#tab td:hover{
+    background-color: black;
+    color: beige;
 }

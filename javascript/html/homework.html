@@ -9,14 +9,27 @@
 </head>
 <body>
     <h2>JAVASCRIPT Homeworks :</h2>
-    <div class="btn-div">
+    <div class="btn-homework">
         <button class="btn" id="arithmeticResult" onclick="arithmeticResult()">Arithmetic</button>
-        <button class="btn" onclick="equationSecondDegre()">Equation du Second Degre</button>
-        <button class="btn" onclick="igisoroCinqPaire()">Igisoro Paire *5</button>
-        <button class="btn" onclick="igisoroCinqImpaire()">Igisoro Impaire *5</button>
+        <button class="btn" onclick="equationSecondDegre(2,4,2)">Equation du Second Degre</button>
+        <button class="btn" onclick="igisoroCinqPaire(2)">Igisoro Paire *2</button>
+        <button class="btn" onclick="igisoroCinqImpaire(5)">Igisoro Impaire *5</button>
+        <button class="btn" onclick="tableau()">Tableau</button>
     </div>
 
-    <p id="result"></p>
+    <div id="exercice1" style="display: none;">
+        <p id="tableau"></p>
+        <p id="cni"></p>
+
+        <button class="btn tab" onclick="croissantDecroissant()" id="croissant">Croissant</button>
+        <button class="btn tab" onclick="croissantDecroissant()" style="display: none;" id="decroissant">Décroissant</button>
+        <button class="btn tab" onclick="maxMin()">Maximum et Minimum</button>
+        <button class="btn tab" onclick="paire()">Paire</button>
+        <button class="btn tab" onclick="impaire()">Impaire</button>
+        <button class="btn tab" onclick="cni()">CNI</button>
+    </div>
+
+    <div id="result"></div>
 
     <script src="../js/homework.js"></script>
 </body>
