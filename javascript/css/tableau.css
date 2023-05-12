@@ -59,7 +59,7 @@ td button{
     color: #e2d55c;
 }
 
-/* Scrollbaa ci-dessous à refaire */
+/* Scrollbar ci-dessous à refaire */
 ::-webkit-scrollbar{
     width: 6px;
 }
