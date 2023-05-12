@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh; /* vh = viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #7d2ae8;
+    padding: 30px;
+}
+.container{
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px #000;
+}
+.form-content .login-form{
+    width: 100%;
+}
+form .form-content .title{ /* titre "Login" */
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+}
+form .form-content .title::before{ /* soulignement du titre "Login" */
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 20px;
+    left: 0;
+    bottom: 0;
+    background: #7d2ae8;
+}
+form .form-content .input-boxes{
+    margin-top: 30px;
+}
+form .form-content .input-box{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+.form-content .input-box input{
+    height: 100%;
+    width: 100%;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #928f96c5;
+    transition: all 0.9s ease;
+}
+.form-content .input-box input:focus,
+.form-content .input-box input:valid{
+    border-bottom: 2px solid #7d2ae8;
+}
+.form-content .input-box i{
+    font-size: 17px;
+    color: #7d2ae8;
+    position: absolute;
+}
+form .form-content .btn{
+    color: #fff;
+    margin-top: 40px;
+}
+form .form-content .btn input{
+    color: #fff;
+    background: #7d2ae8;
+    border-radius: 7px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+form .form-content .btn input:hover{
+    background: #4f1897;
+    border-bottom: 2px solid #4f1897;
+}
+form .form-content .text{
+    font-size: 12px;
+}
+form .form-content a{
+    text-decoration: none;
+    color: #4f1897;
+}
+form .form-content a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+form .form-content .register-text{
+    text-align: center;
+    margin-top: 25px;
+}

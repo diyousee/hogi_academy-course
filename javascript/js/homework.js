@@ -120,7 +120,7 @@ function croissantDecroissant(){
 
 
     if(document.getElementById('croissant').style.display != "none"){
-
+        
         for(i=0; i<tableau.length; i++){
             for(j=i+1; j<tableau.length; j++){
                 if(tableau[i] > tableau[j]){
@@ -133,8 +133,7 @@ function croissantDecroissant(){
 
         document.getElementById('decroissant').style.display = "inline-block";
         document.getElementById('croissant').style.display = "none";
-        var caption = "<caption>Croissant</caption>";
-
+        var caption = "<caption>Croissant</caption>";   
 
     }else if(document.getElementById('decroissant').style.display != "none"){
 
