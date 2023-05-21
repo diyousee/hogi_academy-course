@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background-color: rgb(68, 15, 15);
+}
+.product_form{
+    background-color: rgb(230, 180, 120);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.product_property{
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    padding: 5px;
+}
+.fa-save{
+    border: 1px solid rgb(11, 196, 119);
+    padding: 7px 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(11, 196, 119);
+}
+.fa-save:hover{
+    border: 1px solid rgb(255, 255, 255);
+    padding: 7px 20px;
+    background-color: rgb(11, 196, 119);
+    color: rgb(255, 255, 255);
+}
+.form{
+    margin: 50px 0 0 30px;
+    cursor: pointer;
+}
+.error_msg{
+    color: rgb(255, 0, 0);
+    text-align: center;
+    padding: 5px;
+    font-size: 10px;
+}
+
+/*      Css pour la table contenant les produits      */
+
+.products_list{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+table{
+    border-collapse: collapse;
+    text-align: center;
+}
+.header_fixed{
+    height: 500px;
+    overflow: auto;
+    margin-top: 30px;
+    border: 1px solid #dddddd;
+}
+.header_fixed thead th{
+    position: sticky;
+    top: 0;
+    background: #236b4f;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: 600;
+}
+th, td{
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+/* td img{
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 3px solid #e2d55c;
+    color: rgb(0, 0, 0);
+} */
+tr:nth-child(even){
+    background-color: #ffffff;
+}
+tr:nth-child(odd){
+    background-color: #dddddd;
+}
+tr:hover td{
+    color: #236b4f;
+    cursor: pointer;
+    background-color: #e2d55c;
+}
+.fa-edit{
+    border: 1px solid rgb(10, 165, 255);
+    padding: 7px 20px;
+    background-color: #ffffff;
+    color: rgb(10, 165, 255);
+}
+.fa-edit:hover{
+    border: 1px solid rgb(255, 255, 255);
+    padding: 7px 20px;
+    background-color: rgb(10, 165, 255);
+    color: #ffffff;
+}
+.fa-trash{
+    border: 1px solid #d40000;
+    padding: 7px 20px;
+    background-color: rgb(255, 255, 255);
+    color: #d40000;
+}
+.fa-trash:hover{
+    border: 1px solid #ffffff;
+    padding: 7px 20px;
+    background-color: #d40000;
+    color: #ffffff;
+}

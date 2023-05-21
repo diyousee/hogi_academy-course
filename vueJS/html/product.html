@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/product.css">
+    <script src="../js/vue.js"></script>
+    <!-- font-awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <title>Product</title>
+</head>
+<body>
+    <div id="app">
+        <h1 style="color:white; text-align: center;">Product Form</h1>
+        <div class="product_form">
+            <div class="product_property">
+                <label for="product_name">Name</label>
+                <input type="text" name="product_name" id="product_name" v-model="name">
+                <span v-if="name.trim() === '' " class="error_msg">{{ msg }}</span>
+            
+                <label for="product_volume">Volume</label>
+                <input type="text" name="product_volume" id="product_volume" v-model="volume" style="width: 50px;">
+            
+                <label for="product_unity">Unity</label>
+                <select name="product_unity" id="product_unity" v-model="unity" style="width: 50px;">
+                    <option value="kg">Kg</option>
+                    <option value="cl">Cl</option>
+                    <option value="cm">Cm</option>
+                </select>
+            </div>
+            <div class="product_property">
+                <label for="product_purchase_price">Purchase Price</label>
+                <input type="text" name="product_purchase_price" id="product_purchase_price" v-model="purchase_price" style="width: 50px;">
+                <span v-if="purchase_price.trim() === '' " class="error_msg">{{ msg }}</span>
+            
+                <label for="product_sale_price">Sale Price</label>
+                <input type="text" name="product_sale_price" id="product_sale_price" v-model="sale_price" style="width: 50px;">
+                <span v-if="sale_price.trim() === '' " class="error_msg">{{ msg }}</span>            
+            </div>
+            <div class="product_property">
+                <label for="product_category">Category</label>
+                <select name="product_category" id="product_category" v-model="category">
+                    <option value="drinks">Drinks</option>
+                    <option value="foods">Foods</option>
+                    <option value="dress">Dress</option>
+                    <option value="arts">Arts</option>
+                </select>
+                <span v-if="category.trim() === '' " class="error_msg">{{ msg }}</span>
+                
+                <label for="product_quantity">Quantity</label>
+                <input type="text" name="product_quantity" id="product_quantity" v-model="quantity" style="width: 50px;">
+                <span v-if="quantity.trim() === '' " class="error_msg">{{ msg }}</span>
+            </div>
+            <div class="product_property">
+                <label for="product_description">Description</label>
+                <textarea name="product_description" id="product_description" v-model="description"></textarea> 
+            </div>
+            <div class="product_property">
+                <label for="product_expiry_date">Expiry Date</label>
+                <input type="text" name="product_expiry_date" id="product_expiry_date" v-model="expiry_date" style="width: 100px;">
+            </div>
+            <div class="product_property">
+                <label for="product_supplier">Supplier</label>
+                <select name="product_supplier" id="product_supplier" v-model="supplier">
+                    <option value="hogi">Hogi</option>
+                    <option value="academy">Academy</option>
+                    <option value="html">Html</option>
+                    <option value="css">Css</option>
+                </select>
+                <span v-if="supplier.trim() === '' " class="error_msg">{{ msg }}</span>
+            </div>
+            
+                <span @click="addProduct" id="addProductBtn"><i class="fas fa-save form"></i></span>
+            
+                <span @click="editProduct" id="editProductBtn" style="display: none;"><i class="fas fa-edit form"></i></span>
+            
+        </div>
+
+        <div class="products_list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Purchase Price</th>
+                        <th>Sale Price</th>
+                        <th>Qty</th>
+                        <th>Vol.</th>
+                        <th>Unity</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Expiry Date</th>
+                        <th>Supplier</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>{{ name }}</td>
+                        <td>{{ purchase_price }}</td>
+                        <td>{{ sale_price }}</td>
+                        <td>{{ quantity }}</td>
+                        <td>{{ volume }}</td>
+                        <td>{{ unity }}</td>
+                        <td>{{ category }}</td>
+                        <td>{{ description }}</td>
+                        <td>{{ expiry_date }}</td>
+                        <td>{{ supplier }}</td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr v-for="(product, index) in products">
+                        <td v-if="product.product_name">{{ index }}</td>
+                        <td v-if="product.product_name">{{ product.product_name }}</td>
+                        <td v-if="product.product_name">{{ product.product_purchase_price }}</td>
+                        <td v-if="product.product_name">{{ product.product_sale_price }}</td>
+                        <td v-if="product.product_name">{{ product.product_quantity }}</td>
+                        <td v-if="product.product_name">{{ product.product_volume }}</td>
+                        <td v-if="product.product_name">{{ product.product_unity }}</td>
+                        <td v-if="product.product_name">{{ product.product_category }}</td>
+                        <td v-if="product.product_name">{{ product.product_description }}</td>
+                        <td v-if="product.product_name">{{ product.product_expiry_date }}</td>
+                        <td v-if="product.product_name">{{ product.product_supplier }}</td>
+                        <td v-if="product.product_name"><span @click="selectProduct(product, index)"><i class="fas fa-edit"></span></td>
+                        <td v-if="product.product_name"><span @click="deleteProduct(index)"><i class="fas fa-trash"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+    </div>
+    
+    <script>
+        const myProduct = Vue.createApp({
+            data() {
+                return {
+                    name:'',
+                    purchase_price:'',
+                    sale_price:'',
+                    quantity:'',
+                    volume:'',
+                    unity:'',
+                    category:'',
+                    description:'',
+                    expiry_date:'',
+                    supplier:'',
+                    
+                    msg:'',
+                    productId: null,
+
+                    products: [{
+                        product_name:'',
+                        product_purchase_price:'',
+                        product_sale_price:'',
+                        product_quantity:'',
+                        product_volume:'',
+                        product_unity:'',
+                        product_category:'',
+                        product_description:'',
+                        product_expiry_date:'',
+                        product_supplier:''
+                    }]                    
+                }
+            },
+            methods: {
+                addProduct(){
+                    if(this.name.trim() !== "" && this.purchase_price.trim() !== "" && this.sale_price.trim() !== ""  && this.quantity.trim() !== "" && this.category.trim() !== "" && this.supplier.trim() !== ""){
+                        this.products.push({
+                            product_name : this.name,
+                            product_purchase_price : this.purchase_price,
+                            product_sale_price : this.sale_price,
+                            product_quantity : this.quantity,
+                            product_volume : this.volume,
+                            product_unity : this.unity,
+                            product_category : this.category,
+                            product_description : this.description,
+                            product_expiry_date : this.expiry_date,
+                            product_supplier : this.supplier
+
+                        })
+                        
+                        this.name=''
+                        this.purchase_price=''
+                        this.sale_price=''
+                        this.quantity=''
+                        this.volume=''
+                        this.unity=''
+                        this.category=''
+                        this.description=''
+                        this.expiry_date=''
+                        this.supplier=''
+                        this.msg=''
+                    }else{
+                        this.msg= 'Complete this field'
+                    }
+                },
+                deleteProduct(item){
+                    this.products.splice(item, 1)
+                },
+                selectProduct(product, id){
+                    this.name= product.product_name
+                    this.purchase_price= product.product_purchase_price
+                    this.sale_price= product.product_sale_price
+                    this.quantity= product.product_quantity
+                    this.volume= product.product_volume
+                    this.unity= product.product_unity
+                    this.category= product.product_category
+                    this.description= product.product_description
+                    this.expiry_date= product.product_expiry_date
+                    this.supplier= product.product_supplier
+                    
+                    this.productId = id
+
+                    document.getElementById("addProductBtn").style.display="none"
+                    document.getElementById("editProductBtn").style.display="inline"
+                },
+                editProduct(){
+                    if(this.name.trim() !== "" && this.purchase_price.trim() !== "" && this.sale_price.trim() !== "" && this.quantity.trim() !== "" && this.category.trim() !== "" && this.supplier.trim() !== ""){
+
+                        this.products[this.productId].product_name = this.name
+                        this.products[this.productId].product_purchase_price = this.purchase_price
+                        this.products[this.productId].product_sale_price = this.sale_price
+                        this.products[this.productId].product_quantity = this.quantity
+                        this.products[this.productId].product_volume = this.volume
+                        this.products[this.productId].product_unity = this.unity
+                        this.products[this.productId].product_category = this.category
+                        this.products[this.productId].product_description = this.description
+                        this.products[this.productId].product_expiry_date = this.expiry_date
+                        this.products[this.productId].product_supplier = this.supplier
+                        
+                        this.name=''
+                        this.purchase_price=''
+                        this.sale_price=''
+                        this.quantity=''
+                        this.volume=''
+                        this.unity=''
+                        this.category=''
+                        this.description=''
+                        this.expiry_date=''
+                        this.supplier=''
+                        this.msg=''
+                        
+                        document.getElementById("addProductBtn").style.display="inline"
+                        document.getElementById("editProductBtn").style.display="none"
+                    }else{
+                        this.msg= 'Complete this field'
+                    }
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>

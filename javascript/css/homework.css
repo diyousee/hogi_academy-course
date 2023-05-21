@@ -3,16 +3,13 @@ body {
     color: rgb(255, 255, 255);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 h2 {
     color: rgb(31, 170, 175);
 }
-
 .btn-homework {
     display: flex;
     flex-direction: row;
 }
-
 .btn {
     background-color: #cedb11;
     color: #302301;
@@ -22,14 +19,12 @@ h2 {
     border-radius: 5px;
     font-size: 15px;
 }
-
 .btn:hover {
     background-color: #ffbb00;
     color: #3a1a05;
     border: 1px solid #3a1a05;
     border-radius: 10px;
 }
-
 .btn.tab {
     color: #072017;
     background-color: rgb(31, 170, 175);
@@ -38,25 +33,21 @@ h2 {
     border: none;
     font-size: 15px;
 }
-
 .btn.tab:hover {
     color: #ffbb00;
     background-color: #3a1a05;
     border: 1px solid #ffbb00;
     border-radius: 5px;
 }
-
 h5 {
     font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(255, 255, 255);
     font-style: italic;
 }
-
 .finalResult {
     font-size: medium;
     font-weight: bold;
 }
-
 #tab td {
     background-color: rgb(235, 245, 144);
     color: rgb(9, 56, 34);
@@ -65,7 +56,6 @@ h5 {
     margin: 0;
     text-align: center;
 }
-
 #tab td:hover{
     background-color: black;
     color: beige;

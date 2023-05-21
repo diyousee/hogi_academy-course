@@ -1,0 +1,44 @@
+div{
+    margin: 5px;
+}
+.todo{
+    width: 150px;
+    height: 50px;
+    background-color: #181203;
+    color: rgb(208, 255, 0);
+    border: 2px solid #03ac90;
+    position: relative;
+    font: bold;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font: bold;
+    cursor: pointer;
+}
+.edit{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #00ff80;
+    font: bold;
+    cursor: pointer;
+}
+button {
+    background-color: #cedb11;
+    color: #302301;
+    padding: 4px 14px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+button:hover {
+    background-color: #ffbb00;
+    color: #3a1a05;
+    border: 1px solid #3a1a05;
+    border-radius: 10px;
+    cursor: pointer;
+}
