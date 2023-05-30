@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/myProject.css">
+    <script src="../js/vue.js"></script>
+    <!-- font-awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <title>Bills</title>
+</head>
+<body>
+    <div id="app">
+        <h1 style="color:white; text-align: center;">Interface</h1>
+        <div class="bill_form">
+            <div class="bill_data">
+                <label for="entry_date">Date</label>
+                <input type="date" name="entry_date" id="entry_date" placeholder="Date..." v-model="entry_date">
+            </div>
+
+            <div class="bill_data">
+                <label for="imputation">Imputation</label>
+                <input type="text" name="imputation" id="imputation" placeholder="Imputation..." v-model="imputation">
+
+                <label for="ligne_budgetaire">Ligne Budgétaire</label>
+                <input type="text" name="ligne_budgetaire" id="ligne_budgetaire" placeholder="Ligne Budgétaire..." v-model="ligne_budgetaire">
+
+                <label for="libelle">Libellé</label>
+                <input type="text" name="libelle" id="libelle" placeholder="Libellé..." v-model="libelle">
+            </div>
+
+            <div class="bill_data">
+                <label for="piece">Pièce</label>
+                <input type="text" name="piece" id="piece" placeholder="# Pièce..." v-model="piece">
+
+                <label for="numero_cheque">Numéro du Chèque</label>
+                <input type="number" name="numero_cheque" id="numero_cheque" placeholder="# Chèque" v-model="numero_cheque">
+            </div>
+
+            <div class="bill_data">
+                <label for="compte">Compte</label>
+                <input type="number" name="compte" id="compte" placeholder="Compte..." v-model="compte">
+
+                <label for="debit">Débit</label>
+                <input type="number" name="debit" id="debit" placeholder="Montant à débiter..." v-model="debit">
+
+                <label for="credit">Crédit</label>
+                <input type="number" name="credit" id="credit" placeholder="Montant à créditer..." v-model="credit">
+            </div> 
+
+            <div class="bill_data">
+                <label for="fournisseur">Fournisseur</label>
+                <input type="text" name="fournisseurd" id="fournisseur" placeholder="Fournisseur..." v-model="fournisseur">
+            </div>
+
+            <div class="bill_data">
+                <span @click="addBill"><i class="fas fa-save"></i></span>
+            </div>
+        </div>
+        
+        <div class="bills_list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Imputation</th>
+                        <th>Ligne Budgétaire</th>
+                        <th>Libellé</th>
+                        <th>Pièces</th>
+                        <th>N° Chèque</th>
+                        <th>Comptes</th>
+                        <th>Débit</th>
+                        <th>Crédit</th>
+                        <th>Solde</th>
+                        <th>Fournisseur</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Preview</td>
+                        <td>{{ entry_date }}</td>
+                        <td>{{ imputation }}</td>
+                        <td>{{ ligne_budgetaire }}</td>
+                        <td>{{ libelle }}</td>
+                        <td>{{ piece }}</td>
+                        <td>{{ numero_cheque }}</td>
+                        <td>{{ compte }}</td>
+                        <td>{{ debit }}</td>
+                        <td>{{ credit }}</td>
+                        <td>{{ fournisseur }}</td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr v-for="bill in bills">
+                        <td>Preview</td>
+                        <td>{{ bill.bill_entry_date }}</td>
+                        <td>{{ bill.bill_imputation }}</td>
+                        <td>{{ bill.bill_ligne_budgetaire }}</td>
+                        <td>{{ bill.bill_libelle }}</td>
+                        <td>{{ bill.bill_piece }}</td>
+                        <td>{{ bill.bill_numero_cheque }}</td>
+                        <td>{{ bill.bill_compte }}</td>
+                        <td>{{ bill.bill_debit }}</td>
+                        <td>{{ bill.bill_credit }}</td>
+                        <td>{{ bill.bill_fournisseur }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+    </div>
+    
+    <script>
+        const { createApp } = Vue        
+        createApp({
+            data(){
+                return{
+                    entry_date:'',
+                    imputation:'',
+                    ligne_budgetaire:'',
+                    libelle:'',
+                    piece:'',
+                    numero_cheque:'',
+                    compte:'',
+                    debit:'',
+                    credit:'',
+                    fournisseur:'',
+
+                    bills:[]
+                }
+            },
+            methods:{
+                addBill(){
+                    let bill = {
+                        bill_entry_date: this.entry_date,
+                        bill_imputation: this.imputation,
+                        bill_ligne_budgetaire: this.ligne_budgetaire,
+                        bill_libelle: this.libelle,
+                        bill_piece: this.piece,
+                        bill_numero_cheque: this.numero_cheque,
+                        bill_compte: this.compte,
+                        bill_debit: this.debit,
+                        bill_credit: this.credit,
+                        bill_fournisseur: this.fournisseur
+                    }
+
+                    this.bills.push(bill)
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>

@@ -13,11 +13,11 @@
 </head>
 <body>
     <div id="app">
-        <h1 style="color:white; text-align: center;">Product Form</h1>
+        <h1 style="color:white; text-align: center;">Product Entry Stock</h1>
         <div class="product_form">
             <div class="product_property">
-                <label for="product_name">Name</label>
-                <input type="text" name="product_name" id="product_name" v-model="name">
+                <label for="product_name">Name <sup>*</sup></label>
+                <input type="text" name="product_name" id="product_name" v-model="name" style="width: 150px;">
                 <span v-if="name.trim() === '' " class="error_msg">{{ msg }}</span>
             
                 <label for="product_volume">Volume</label>
@@ -55,13 +55,12 @@
             </div>
             <div class="product_property">
                 <label for="product_description">Description</label>
-                <textarea name="product_description" id="product_description" v-model="description"></textarea> 
+                <textarea name="product_description" id="product_description" v-model="description" style="width: 150px;"></textarea> 
             </div>
             <div class="product_property">
                 <label for="product_expiry_date">Expiry Date</label>
-                <input type="text" name="product_expiry_date" id="product_expiry_date" v-model="expiry_date" style="width: 100px;">
-            </div>
-            <div class="product_property">
+                <input type="date" name="product_expiry_date" id="product_expiry_date" v-model="expiry_date">
+            
                 <label for="product_supplier">Supplier</label>
                 <select name="product_supplier" id="product_supplier" v-model="supplier">
                     <option value="hogi">Hogi</option>
@@ -71,11 +70,9 @@
                 </select>
                 <span v-if="supplier.trim() === '' " class="error_msg">{{ msg }}</span>
             </div>
-            
-                <span @click="addProduct" id="addProductBtn"><i class="fas fa-save form"></i></span>
-            
-                <span @click="editProduct" id="editProductBtn" style="display: none;"><i class="fas fa-edit form"></i></span>
-            
+
+            <span @click="addProduct" id="addProductBtn"><i class="fas fa-save button-form"></i></span>
+            <span @click="editProduct" id="editProductBtn" style="display: none;"><i class="fas fa-edit button-form"></i></span>    
         </div>
 
         <div class="products_list">
@@ -98,7 +95,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>-</td>
+                        <td>Preview</td>
                         <td>{{ name }}</td>
                         <td>{{ purchase_price }}</td>
                         <td>{{ sale_price }}</td>
@@ -111,8 +108,8 @@
                         <td>{{ supplier }}</td>
                         <td colspan="2"></td>
                     </tr>
-                    <tr v-for="(product, index) in products">
-                        <td v-if="product.product_name">{{ index }}</td>
+                    <tr v-for="(product, index) in products" v-if="products">
+                        <td>{{ index+1 }}</td>
                         <td v-if="product.product_name">{{ product.product_name }}</td>
                         <td v-if="product.product_name">{{ product.product_purchase_price }}</td>
                         <td v-if="product.product_name">{{ product.product_sale_price }}</td>
@@ -147,58 +144,65 @@
                     supplier:'',
                     
                     msg:'',
-                    productId: null,
+                    productId: null, // Lors du Click pour la modification du produit
 
-                    products: [{
-                        product_name:'',
-                        product_purchase_price:'',
-                        product_sale_price:'',
-                        product_quantity:'',
-                        product_volume:'',
-                        product_unity:'',
-                        product_category:'',
-                        product_description:'',
-                        product_expiry_date:'',
-                        product_supplier:''
-                    }]                    
+                    products: []                    
                 }
+            },
+           /*  watch:{
+                "products": {
+                    deep: true,
+                    handler(newValue){
+                        console.log(newValue)
+                    }
+                }
+            }, */
+            mounted() {
+                var listProducts = localStorage.getItem("products")
+
+                if (listProducts) {
+                    this.products = JSON.parse(listProducts)
+                }else {
+                    localStorage.setItem("products", JSON.stringify(this.products)) // JSON.stringify convertie l'objet en chaine de character
+                }
+                
             },
             methods: {
                 addProduct(){
-                    if(this.name.trim() !== "" && this.purchase_price.trim() !== "" && this.sale_price.trim() !== ""  && this.quantity.trim() !== "" && this.category.trim() !== "" && this.supplier.trim() !== ""){
-                        this.products.push({
-                            product_name : this.name,
-                            product_purchase_price : this.purchase_price,
-                            product_sale_price : this.sale_price,
-                            product_quantity : this.quantity,
-                            product_volume : this.volume,
-                            product_unity : this.unity,
-                            product_category : this.category,
-                            product_description : this.description,
-                            product_expiry_date : this.expiry_date,
-                            product_supplier : this.supplier
+                    let product = {
+                        product_name : this.name,
+                        product_purchase_price : this.purchase_price,
+                        product_sale_price : this.sale_price,
+                        product_quantity : this.quantity,
+                        product_volume : this.volume,
+                        product_unity : this.unity,
+                        product_category : this.category,
+                        product_description : this.description,
+                        product_expiry_date : this.expiry_date,
+                        product_supplier : this.supplier
+                    }
 
-                        })
+                    if(this.name.trim() !== "" && this.purchase_price.trim() !== "" && this.sale_price.trim() !== ""  && this.quantity.trim() !== "" && this.category.trim() !== "" && this.supplier.trim() !== ""){
+                        this.products.push(product)
+
+                        localStorage.setItem("products", JSON.stringify(this.products))
                         
-                        this.name=''
-                        this.purchase_price=''
-                        this.sale_price=''
-                        this.quantity=''
-                        this.volume=''
-                        this.unity=''
-                        this.category=''
-                        this.description=''
-                        this.expiry_date=''
-                        this.supplier=''
-                        this.msg=''
+                        this.resetProduct()
                     }else{
                         this.msg= 'Complete this field'
                     }
                 },
                 deleteProduct(item){
                     this.products.splice(item, 1)
+                    localStorage.setItem("products", JSON.stringify(this.products))
+
+                    this.resetProduct()
+                    
+                    document.getElementById("addProductBtn").style.display="inline"
+                    document.getElementById("editProductBtn").style.display="none"
                 },
                 selectProduct(product, id){
+                    
                     this.name= product.product_name
                     this.purchase_price= product.product_purchase_price
                     this.sale_price= product.product_sale_price
@@ -214,38 +218,49 @@
 
                     document.getElementById("addProductBtn").style.display="none"
                     document.getElementById("editProductBtn").style.display="inline"
+                    
+                    //console.log(localStorage.getItem("products"))
                 },
                 editProduct(){
                     if(this.name.trim() !== "" && this.purchase_price.trim() !== "" && this.sale_price.trim() !== "" && this.quantity.trim() !== "" && this.category.trim() !== "" && this.supplier.trim() !== ""){
 
-                        this.products[this.productId].product_name = this.name
-                        this.products[this.productId].product_purchase_price = this.purchase_price
-                        this.products[this.productId].product_sale_price = this.sale_price
-                        this.products[this.productId].product_quantity = this.quantity
-                        this.products[this.productId].product_volume = this.volume
-                        this.products[this.productId].product_unity = this.unity
-                        this.products[this.productId].product_category = this.category
-                        this.products[this.productId].product_description = this.description
-                        this.products[this.productId].product_expiry_date = this.expiry_date
-                        this.products[this.productId].product_supplier = this.supplier
+                        let product = {
+                            product_name : this.name,
+                            product_purchase_price : this.purchase_price,
+                            product_sale_price : this.sale_price,
+                            product_quantity : this.quantity,
+                            product_volume : this.volume,
+                            product_unity : this.unity,
+                            product_category : this.category,
+                            product_description : this.description,
+                            product_expiry_date : this.expiry_date,
+                            product_supplier : this.supplier
+                        }
+
+                        this.products[this.productId]=product
+                        localStorage.setItem("products", JSON.stringify(this.products))
                         
-                        this.name=''
-                        this.purchase_price=''
-                        this.sale_price=''
-                        this.quantity=''
-                        this.volume=''
-                        this.unity=''
-                        this.category=''
-                        this.description=''
-                        this.expiry_date=''
-                        this.supplier=''
-                        this.msg=''
+                        this.resetProduct()
                         
                         document.getElementById("addProductBtn").style.display="inline"
                         document.getElementById("editProductBtn").style.display="none"
                     }else{
                         this.msg= 'Complete this field'
                     }
+                    
+                },
+                resetProduct(){
+                    this.name=''
+                    this.purchase_price=''
+                    this.sale_price=''
+                    this.quantity=''
+                    this.volume=''
+                    this.unity=''
+                    this.category=''
+                    this.description=''
+                    this.expiry_date=''
+                    this.supplier=''
+                    this.msg=''
                 }
             }
         }).mount("#app")

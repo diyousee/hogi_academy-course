@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="../css/employees.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Liste des employées</h1>
+
+        <!-- Modal Ajouter et Modifier Employé -->
+
+        <div class="open-modal">
+            <!-- <button class="ajouter" @click="add=!add">Ajouter</button> -->
+            <a href="#modalEmployee" class="ajouter" @click="add=!add, edit=!edit">Ajouter Employé</a>
+        </div>
+        <div class="modal" id="modalEmployee">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="text header-text">Employee Form</span>
+                    <a href="" class="close-modal">X</a>
+                </div>
+                <div class="modal-body">
+                    <input type="" name="" placeholder="company" v-model="company">
+                    <input type="" name="" placeholder="contact" v-model="contact">
+                    <input type="" name="" placeholder="country" v-model="country">                
+                </div>
+                <div class="modal-footer">
+                    <button class="modifier" @click="validerModification">ValiderModification</button>
+                    <button class="ajouter" @click="ajouter" v-if="add==true">Valider</button>
+                </div>
+            </div>        
+        </div>
+
+        <!-- Modal Ajouter et Modifier Congé -->
+
+        <div class="modal" id="modalConge">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="text header-text">Congé Form</span>
+                    <a href="" class="close-modal">X</a>
+                </div>
+                <div class="modal-body">
+                    <input type="date" name="" placeholder="debut" v-model="debut">
+                    <input type="date" name="" placeholder="fin" v-model="fin">               
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="ajouter" @click="validerConger">Valider Congé</a>
+                </div>
+            </div>        
+        </div>
+
+
+        <!-- Formulaire Valider et Modifier Employé/Congé -->
+<!-- 
+        <div class="form" v-if="add==true || edit==true">
+            <input type="" name="" placeholder="company" v-model="company">
+            <input type="" name="" placeholder="contact" v-model="contact">
+            <input type="" name="" placeholder="country" v-model="country">
+            <button class="modifier" @click="validerModification" v-if="edit==true">ValiderModification</button>
+            <button class="ajouter" @click="ajouter" v-if="add==true">Valider</button>
+        </div>
+        <div class="form" v-if="addConge==true">
+            <input type="date" name="" placeholder="debut" v-model="debut">
+            <input type="date" name="" placeholder="fin" v-model="fin">
+            <button class="ajouter" @click="validerConger">Valider Congé</button>
+        </div>
+ -->
+        <!-- tableau Liste des Employés -->
+
+        <table id="customers">
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+                <th>Debut Conge</th>
+                <th>Fin Conge</th>
+                <th>Actions</th>
+            </tr>
+            <tr v-for="(x, i) in listeEmployes">
+                <td>{{x.company}}</td>
+                <td>{{x.contact}}</td>
+                <td>{{x.country}}</td>
+                <td>{{x.debut_conge}}</td>
+                <td>{{x.fin_conge}}</td>
+                <td>
+                    <a href="#modalEmployee" class="modifier" @click="modifier(i)">Modifier</a>
+                    <a class="supprimer" @click="supprimer(i)">Supprimer</a>
+                    <a href="#modalConge" class="conge" @click="ouvrirCongeForm(i)">Congé</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+      const { createApp } = Vue
+      createApp({
+        data() {
+          return {
+            nom:"",
+            company:"",
+            contact:"",
+            country:"",
+            debut:null,
+            fin:null,
+            add:false,
+            edit:false,
+            addConge:false,
+            employeId:-1,
+           listeEmployes:[]
+          }
+        },
+        watch: {
+          'nom': (newVal, oldVal) => {
+            if(newVal!=oldVal){
+              localStorage.setItem("nom", newVal)
+            }
+          },
+         /* "listeEmployes":{
+            deep:true,
+            hanlder(newVal){
+              console.log(newVal)
+            }
+          }*/
+        },
+        mounted(){
+          var listeE = localStorage.getItem("listeEmployes")
+
+          if(listeE){
+            this.listeEmployes=JSON.parse(listeE)
+          }else{
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          }
+        },
+        methods:{
+          ajouter(){
+            let employeObj = {
+              "company":this.company,
+              "contact":this.contact,
+              "country":this.country,
+              "debut_conge":null,
+              "fin_conge":null,
+            }
+            this.listeEmployes.push(employeObj)
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          },
+          supprimer(employeId){
+            this.listeEmployes.splice(employeId, 1)
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          },
+          modifier(employeId){
+            this.edit=!this.edit
+            this.employeId=employeId
+            this.company=this.listeEmployes[employeId].company
+            this.contact=this.listeEmployes[employeId].contact
+            this.country=this.listeEmployes[employeId].country
+          },
+          validerModification(){
+            let obj = {company:this.company,contact:this.contact,country:this.country}
+            this.listeEmployes[this.employeId]=obj
+            
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          },
+          ouvrirCongeForm(employeId){            
+            this.debut=this.listeEmployes[employeId].debut_conge
+            this.fin=this.listeEmployes[employeId].fin_conge
+
+            this.employeId=employeId
+            this.addConge=!this.addConge
+          },
+          validerConger(){
+            let obj = this.listeEmployes[this.employeId]
+            
+            if(this.debut < this.fin){
+                obj.debut_conge=this.debut
+                obj.fin_conge=this.fin
+            }
+
+            this.listeEmployes[this.employeId]=obj
+
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          },
+          verifierConge(employeId){
+            let date_debut = this.listeEmployes[employeId].debut_conge
+            let date_fin = this.listeEmployes[employeId].fin_conge
+            let today = new Date()
+
+            console.log("today",today.toLocaleDateString())
+            /* if(date_debut && date_fin && today){
+                if(date_debut.getTime() < today && date_fin.getTime() > today.getTime()){
+                    console.log(today.getTime())
+                }
+            } */
+
+          }
+        }
+      }).mount('#app')
+    </script>
+</body>
+
+</html>

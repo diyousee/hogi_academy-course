@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td,
+    #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+
+    }
+
+    .modifier {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .supprimer {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .conge {
+        background-color: cadetblue;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .modifier:hover,
+    .supprimer:hover,
+    .conge:hover {
+        opacity: 0.8;
+    }
+    .form{
+      max-width: 70%;
+      border: 1px solid black;
+      margin: 10px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+     <h1>Liste des employées</h1>
+     <button class="modifier" @click="add=!add" >Ajouter</button>
+     <div class="form" v-if="add==true">
+       <input type="" name="" placeholder="company" v-model="company">
+       <input type="" name="" placeholder="contact" v-model="contact">
+       <input type="" name="" placeholder="country" v-model="country">
+       <button class="modifier" @click="validerModification">ValiderModification</button>
+       <button class="modifier" @click="ajouter">Valider</button>
+     </div>
+     <div class="form" v-if="addConge==true">
+       <input type="date" name="" placeholder="debut" v-model="debut">
+       <input type="date" name="" placeholder="fin" v-model="fin">
+       <button class="modifier" @click="validerConger">Valider Conger</button>
+     </div>
+    <table id="customers">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+            <th>Debut Conge</th>
+            <th>Fin Conge</th>
+            <th>Actions</th>
+        </tr>
+        <tr v-for="(x, i) in listeEmployes">
+            <td>{{x.company}}</td>
+            <td>{{x.contact}}</td>
+            <td>{{x.country}}</td>
+            <td>{{x.debut_conge}}</td>
+            <td>{{x.fin_conge}}</td>
+            <td>
+                <button class="modifier" @click="modifier(i)">Modifier</button>
+                <button class="supprimer">Supprimer</button>
+                <button class="conge" @click="ouvrirCongeForm(i)">Ajout congé</button>
+            </td>
+        </tr>
+    </table>
+  </div>
+    <script>
+      const { createApp } = Vue
+      createApp({
+        data() {
+          return {
+            nom:"",
+            company:"",
+            contact:"",
+            country:"",
+            debut:null,
+            fin:null,
+            addConge:false,
+            employeId:-1,
+            add:false,
+           listeEmployes:[]
+          }
+        },
+        watch: {
+          'nom': (newVal, oldVal) => {
+            if(newVal!=oldVal){
+              localStorage.setItem("nom", newVal)
+            }
+          },
+         /* "listeEmployes":{
+            deep:true,
+            hanlder(newVal){
+              console.log(newVal)
+            }
+          }*/
+        },
+        mounted(){
+          console.log(this.listeEmployes);
+
+          var listeE = localStorage.getItem("listeEmployes")
+
+          if(listeE){
+            this.listeEmployes=JSON.parse(listeE)
+          }else{
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          }
+
+        console.log(this.listeEmployes);
+        },
+        methods:{
+          ajouter(){
+            let employeObj = {
+              "company":this.company,
+              "contact":this.contact,
+              "country":this.country,
+              "debut_conge":null,
+              "fin_conge":null,
+            }
+            this.listeEmployes.push(employeObj)
+            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+          },
+          modifier(employeId){
+            this.add=!this.add
+            this.employeId=employeId
+            this.company=this.listeEmployes[employeId].company
+            this.contact=this.listeEmployes[employeId].contact
+            this.country=this.listeEmployes[employeId].country
+          },
+          validerModification(){
+            let obj = {company:this.company,contact:this.contact,country:this.country}
+            this.listeEmployes[this.employeId]=obj
+          },
+          ouvrirCongeForm(employeId){
+            this.employeId=employeId
+            this.addConge=!this.addConge
+          },
+          validerConger(){
+            let obj = this.listeEmployes[this.employeId]
+            obj.debut_conge=this.debut
+            obj.fin_conge=this.fin
+            this.listeEmployes[this.employeId]=obj
+          }
+          /*verifierConge(employeId){
+            let date_debut = this.listeEmployes[employeId].date_debut
+            let date_fin = this.listeEmployes[employeId].date_fin
+
+            let today = new Date()
+
+          }*/
+        }
+      }).mount('#app')
+    </script>
+</body>
+
+</html>
