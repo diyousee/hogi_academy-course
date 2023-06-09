@@ -146,8 +146,10 @@
               "debut_conge":null,
               "fin_conge":null,
             }
-            this.listeEmployes.push(employeObj)
-            localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+            if(employeObj.company.trim() !== "" && employeObj.contact.trim() !== "" && employeObj.country.trim() !== ""){
+              this.listeEmployes.push(employeObj)
+              localStorage.setItem("listeEmployes", JSON.stringify(this.listeEmployes))
+            }
           },
           supprimer(employeId){
             this.listeEmployes.splice(employeId, 1)
